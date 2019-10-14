@@ -21,7 +21,7 @@ Make Sure you Have the following things Installed on your Machines.
 - pip
 - Django
 
-Follow [this](https://realpython.com/django-setup/) link to setup Django project
+Follow this [ link ](https://realpython.com/django-setup/) to setup Django project.
 
 ## Running the App
 open the Terminal and make sure you are in Right Directory `/Stock_app/` containing `manage.py` file and run below commands.
