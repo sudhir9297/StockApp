@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if api%}
+    {% if api != "error"%}
+        <div class="card text-white m-3" style="max-width: 24rem;background :#202A3B">
+                <div class="card-header text-uppercase" ><h3>{{api.companyName}}</h3></div>
+            <div class="card-body" style="line-height: 1;">
+            <p class="card-text">Price:${{api.latestPrice}}</p>
+            <p class="card-text">Previous Close:{{api.previousClose}}</p>
+            <p class="card-text">MarketCap:{{api.marketCap}}</p>
+            <p class="card-text">YTD Change:{{api.ytdChange}}</p>
+            <p class="card-text">YTD Change:{{api..week52High}}</p>
+            <p class="card-text">YTD Change:{{api.week52Low}}</p>
+            </div>
+        </div>
+    {% else%}
+    <div class="card text-white m-3" style="max-width: 24rem;background :#202A3B">
+        <div class="card-header text-uppercase"><h5>Sorry! Could not Load data for given Ticker,Plz check the ticker</h5></div>
+    </div>
+    {%endif  %}
+{% endif %}
+
+{% if output %}
+<div class="container-fluid mt-3">
+    <hr>
+    <h3 class="text-uppercase " style="font-weight: bold;color :white;">ADDED STOCK:</h3><br/>
+    <div class="row">
+            {% for items in output%}
+                <div class="col-md-3 col-sm-6">
+                    <div class="card text-white mb-3" style="max-width: 24rem;background :#202A3B">
+                        <div class="card-header text-uppercase">{{items.companyName}}</div>
+                        <div class="card-body" style="line-height: 1;">
+                        <p class="card-text">Price:${{items.latestPrice}}</p>
+                        <p class="card-text">Previous Close:{{items.previousClose}}</p>
+                        <p class="card-text">MarketCap:{{items.marketCap}}</p>
+                        <p class="card-text">YTD Change:{{items.ytdChange}}</p>
+                        </div>
+                    </div>
+                </div>
+            {% endfor%}
+    </div>
+</div>
+{% else %}
+<h3 class="text-uppercase " style="font-weight: bold;color :white;">No added Items</h3><br/>
+ 
+{% endif %}
+
+
+{% endblock %}

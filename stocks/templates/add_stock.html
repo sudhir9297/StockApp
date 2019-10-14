@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{%  block content %}
+
+<div class="container-fluid mr-3">
+    <h1 style="font-weight: bold;color :white;" >Add Stocks</h1>
+    <br/>
+    
+    <form action="{% url 'stock' %}" class="form-inline my-2 my-lg-0" method="POST">
+        {% csrf_token %}
+        <input class="form-control mr-sm-2"  autocomplete="off" type="search" placeholder="Add ticker To portfolio" aria-label="Search" name="ticker">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Add Stock</button>
+    </form>
+    
+      <br/>
+    
+      <table class="table text-white table-bordered" style="background :#202A3B;">
+        {%if ticker%}
+        <thead class='thead-dark'>
+          <tr>
+            <th scope="col">Company Name</th>
+            <th scope="col">Stock Price</th>
+            <th scope="col">Previous Quote</th>
+            <th scope="col">Market CAP</th>
+            <th scope="col">YTD Change</th>
+            <th scope="col">52WK HIGH</th>
+            <th scope="col">52WK LOW</th>
+          </tr>
+        </thead>
+        <tbody>
+          
+            <tr>
+              {% for list1 in output %}
+              <th scope="row">{{list1.companyName}}</th>
+              <td>{{list1.latestPrice}}</td>
+              <td>{{list1.previousClose}}</td>
+              <td>{{list1.marketCap}}</td>
+              <td>{{list1.ytdChange}}</td>
+              <td>{{list1.week52High}}</td>
+              <td>{{list1.week52Low}}</td>
+    
+            </tr>
+            {% endfor %}
+       
+        </tbody>
+      {%endif%} 
+      </table>
+    
+    {% if ticker%}
+      {%for item in ticker%}
+          <a class="btn btn-secondary" href="{% url 'delete' item.id %}">{{item}}-Delete</a>&nbsp;
+      {%endfor%}
+    {% else%}
+    <h5 style="font-weight: bold;color :white;" >Please Add Stocks to List</h5>
+    {% endif%}
+    
+</div>
+
+
+{% endblock %}
+
