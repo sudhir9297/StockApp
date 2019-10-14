@@ -28,12 +28,12 @@ open the Terminal and make sure you are in Right Directory `/Stock_app/` contain
 - First install ` requests ` . Its a Library to make HTTP requests. 
   > pip install requests
   
-- now Run the Server
+- Now Run the Server
   > `python manage.py runserver`
   
-  Default IP would be ` http://127.0.0.1:8000/ ` or just check your terminal `Starting development server at http://___ `.
+Default IP would be `http://127.0.0.1:8000/` or just check your terminal `Starting development server at http://___ `.
   
-  You will see Something similar to this.
+You will see Something similar to this.
   
 ## Home Page
 <p align="left">
